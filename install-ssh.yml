@@ -1,0 +1,19 @@
+---
+- hosts: remote-machines
+  become: true
+  tasks:
+  - name: Generate SSH keys on remote machines
+    shell: ssh-keygen -q -t rsa -f /root/.ssh/id_rsa -N ''
+    args:
+      creates: /root/.ssh/id_rsa
+
+  - name: Allow passwordless SSH between all hosts
+    shell: /bin/cat /root/.ssh/id_rsa.pub
+    register: ssh_keys
+
+  - name: Allow passwordless SSH between all hosts
+    lineinfile:
+      dest: /root/.ssh/authorized_keys
+      state: present
+      line:  " {{ hostvars[item]['ssh_keys']['stdout'] }}"
+    with_items: "{{ groups['all']}}"
