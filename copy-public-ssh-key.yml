@@ -1,0 +1,16 @@
+---
+- hosts: remote-machines
+  become: true
+  tasks:
+  - name: make directory in remote machines
+    file:
+      path: "/home/ec2-user/.ssh"
+      state: directory
+  - name: create empty file authorized_keys
+    file:
+      path: "/home/ec2-user/.ssh/authorized_keys"
+      state: touch
+  - name: put pubkey value in authorized_keys
+    lineinfile:
+      path: "/home/ec2-user/.ssh/authorized_keys"
+      line: "{{ pubkey }}"
