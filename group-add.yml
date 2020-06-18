@@ -1,0 +1,23 @@
+---
+- hosts: remote-machines
+  become: true
+  tasks:
+
+    - name: Add group "ops-dba"
+      group:
+        name: ops_dba
+        state: present
+
+    - name: Allow ops_dba group in sudoers file
+      lineinfile:
+        dest: /etc/sudoers
+        state: present
+        regexp: '^%ops_dba'
+        line: '%ops_dba ALL=(ALL) NOPASSWD: ALL'
+
+    - name: Add ops_dba group for ldap in /etc/security/access.conf file
+      lineinfile:
+        dest: /etc/security/access.conf
+        state: present
+        regexp: '^%ops_dba'
+        line: '+:@ops_dba'
