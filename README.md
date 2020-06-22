@@ -18,6 +18,6 @@ Roles & Inventories have been created.
 # 3. We have created the roles for the LDAP one and from there we are invoking the yml and variables. 
 
 
-# For Update group name in files we have created below YML.
+ #  4. For Update group name in files we have created below YML.
 
 # group-add.yml
