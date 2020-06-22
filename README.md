@@ -13,6 +13,7 @@ ansible-playbook copy.yml -i hosts install-ssh-keys.yml
 
 # For LDAP assessment:-
 
+- site .yml has been created for the main file for LDAP.
 Roles & Inventories have been created.
 # 3. We have created the roles for the LDAP one and from there we are invoking the yml and variables. 
 
