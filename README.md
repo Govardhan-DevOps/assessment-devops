@@ -9,3 +9,14 @@ This repo is for Assessment from Pyramid Consulting
 
 # 2. install-ssh-keys.yml - This file is used to install the SSH keys into remote machine
 ansible-playbook copy.yml -i hosts install-ssh-keys.yml 
+
+
+# For LDAP assessment:-
+
+Roles & Inventories have been created.
+# 3. We have created the roles for the LDAP one and from there we are invoking the yml and variables. 
+
+
+# For Update group name in files we have created below YML.
+
+# group-add.yml
